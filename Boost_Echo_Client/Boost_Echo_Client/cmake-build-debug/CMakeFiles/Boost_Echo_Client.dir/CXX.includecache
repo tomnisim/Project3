@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/SocketReader.h
+connectionHandler.h
+../include/connectionHandler.h
+
+../include/connectionHandler.h
+string
+-
+iostream
+-
+boost/asio.hpp
+-
+
+../include/inputReader.h
+connectionHandler.h
+../include/connectionHandler.h
+
+/home/spl211/CLionProjects/Boost_Echo_Client/src/BGRSClient.cpp
+stdlib.h
+-
+connectionHandler.h
+-
+inputReader.h
+-
+thread
+-
+SocketReader.h
+-
+

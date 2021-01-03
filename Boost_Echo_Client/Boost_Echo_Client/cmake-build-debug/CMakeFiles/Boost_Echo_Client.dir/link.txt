@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/Boost_Echo_Client.dir/src/connectionHandler.cpp.o CMakeFiles/Boost_Echo_Client.dir/src/SocketReader.cpp.o CMakeFiles/Boost_Echo_Client.dir/src/inputReader.cpp.o CMakeFiles/Boost_Echo_Client.dir/src/BGRSClient.cpp.o  -o Boost_Echo_Client  -lboost_system -pthread 
