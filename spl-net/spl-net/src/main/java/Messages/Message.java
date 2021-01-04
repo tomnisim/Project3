@@ -1,12 +1,17 @@
 package Messages;
 
-public abstract class Message {
-    private int opcode;
-    public int getOpcode(){return opcode;}
+public interface  Message<T> {
 
-    public abstract String toString();
-    public abstract String getUser();
-    public abstract String getPassword();
-    public abstract Integer getCourseNumber();
 
+
+     int getOpcode();
+      String toString();
+      String getUser();
+      String getPassword();
+      Integer getCourseNumber();
+      Message operate(T database);
+
+boolean isNeedConnectUser();
+ void setConnectUser(String userName);
 }
+

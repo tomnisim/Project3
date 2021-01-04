@@ -9,10 +9,10 @@ public class ReactorMain {
 
     public static void main(String[] args) {
         Database database = Database.getInstance();
-        database.initialize(args[]);
+        database.initialize("Courses.txt");
 
         Server.reactor(
-                Integer.parseInt(args[1]),
+                Integer.parseInt(args[01]),
                 Integer.parseInt(args[0]),
                 () ->  new BgrsProtocol(database), //protocol factory
                 MessageEncoderDecoder::new //message encoder decoder factory

@@ -1,16 +1,33 @@
 package Messages;
 
-public class ACKMessage extends Message {
+import resources.Database;
+
+public class ACKMessage implements Message<Database> {
     private Integer opcode;
     private Integer messageOpcode;
     private String description;
+private boolean needConnectUser=false;
+private String connectedUser=null;
 
+    @Override
+    public void setConnectUser(String userName) {
+        this.connectedUser=userName;
+    }
 
-    public ACKMessage(int messageOpcode,String description)
+    public boolean isNeedConnectUser() {
+        return needConnectUser;
+    }
+
+    public ACKMessage(int messageOpcode, String description)
     {
         this.opcode=12;
         this.messageOpcode=messageOpcode;
         this.description=description;
+    }
+
+    @Override
+    public int getOpcode() {
+        return opcode;
     }
 
     public String toString()
@@ -32,6 +49,11 @@ public class ACKMessage extends Message {
 
     @Override
     public Integer getCourseNumber() {
+        return null;
+    }
+
+    @Override
+    public Message operate(Database database) {
         return null;
     }
 }

@@ -1,17 +1,34 @@
 package Messages;
 
-public class Error extends Message {
+import resources.Database;
+
+import javax.xml.crypto.Data;
+
+public class Error implements Message<Database> {
     private Integer opcode;
     private Integer messageOpcode;
+    private boolean needConnectUser=false;
+    private String connectedUser;
+    @Override
+    public void setConnectUser(String userName) {
+        this.connectedUser=userName;
+    }
+
+    public boolean isNeedConnectUser() {
+        return needConnectUser;
+    }
     public Error(int messageOpcode)
     {
         this.opcode=13;
         this.messageOpcode=messageOpcode;
     }
-    public void operation()
-    {
 
+
+    @Override
+    public int getOpcode() {
+        return opcode;
     }
+
     public String toString(){
         String answer = opcode.toString()+messageOpcode.toString();
         return answer;
@@ -28,6 +45,11 @@ public class Error extends Message {
 
     @Override
     public Integer getCourseNumber() {
+        return null;
+    }
+
+    @Override
+    public Message operate(Database database) {
         return null;
     }
 }

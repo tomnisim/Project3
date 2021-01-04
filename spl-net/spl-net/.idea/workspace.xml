@@ -2,16 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="24770f93-7032-4f4a-9881-6b38f8433219" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/BGRSServer/ReactorMain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/BGRSServer/TPCMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Messages/ACKMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Messages/ACKMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bgrs/BgrsProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/bgrs/BgrsProtocol.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bgrs/MessageEncoderDecoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/bgrs/MessageEncoderDecoder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bgrs/courses.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/bgrs/courses.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/resources/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resources/Course.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Messages/AdminReg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Messages/AdminReg.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Messages/CourseReg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Messages/CourseReg.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Messages/CourseStat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Messages/CourseStat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Messages/Error.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Messages/Error.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Messages/IsRegistered.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Messages/IsRegistered.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Messages/KdamCheck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Messages/KdamCheck.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Messages/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Messages/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Messages/Logout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Messages/Logout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Messages/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Messages/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Messages/MyCourses.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Messages/MyCourses.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Messages/StudentReg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Messages/StudentReg.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Messages/StudentStat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Messages/StudentStat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Messages/UnRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Messages/UnRegister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/BGRSServer/ReactorMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/BGRSServer/ReactorMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/bgrs/BgrsProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/bgrs/BgrsProtocol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/bgrs/MessageEncoderDecoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/bgrs/MessageEncoderDecoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/bgrs/courses.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/resources/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resources/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/resources/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resources/Student.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +54,35 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.ReactorMain">
+    <configuration name="ReactorMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="bgu.spl.net.impl.BGRSServer.ReactorMain" />
+      <module name="spl-net" />
+      <option name="PROGRAM_PARAMETERS" value="&quot;7777&quot; &quot;127&quot;" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="bgu.spl.net.impl.BGRSServer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TPCMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="bgu.spl.net.impl.BGRSServer.TPCMain" />
+      <module name="spl-net" />
+      <option name="PROGRAM_PARAMETERS" value="&quot;7777&quot;" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="bgu.spl.net.impl.BGRSServer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
       <module name="spl-net" />
       <option name="PROGRAM_PARAMETERS" value="C:\Users\Tom\Desktop\university\secondYear\semester3\SPL\MHFC\MHFC\spl-net\spl-net\src\main\java\bgrs\courses.txt" />
@@ -52,6 +90,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.Unnamed" />
+      <item itemvalue="Application.ReactorMain" />
+      <item itemvalue="Application.TPCMain" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ReactorMain" />
+        <item itemvalue="Application.TPCMain" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -80,18 +129,43 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="538" y="113" key="#com.intellij.ide.util.MemberChooser" timestamp="1609260945249">
+    <state x="485" y="71" key="#Unnamed" timestamp="1609776165237">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="485" y="71" key="#Unnamed/0.0.1536.824@0.0.1536.824" timestamp="1609776165237" />
+    <state x="290" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1609776311990">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="290" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1609776311990" />
+    <state x="538" y="113" key="#com.intellij.ide.util.MemberChooser" timestamp="1609771655752">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="538" y="113" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1609771655752" />
     <state x="538" y="113" key="#com.intellij.ide.util.MemberChooser/1920.-66.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1609260945249" />
     <state x="618" y="301" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1609346386905">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="618" y="301" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1536.824@0.0.1536.824" timestamp="1609346386905" />
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1609766964590">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1609776371323">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1609766964590" />
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1609776371323" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1609776371323">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1609776371323" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1609776371323">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1609776371323" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1609776371323">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1609776371323" />
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1609782000018">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1609782000018" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1609255375020">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

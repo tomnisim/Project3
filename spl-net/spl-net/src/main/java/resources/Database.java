@@ -1,7 +1,6 @@
 package resources;
 
 
-import javafx.util.Pair;
 import resources.Admin;
 import resources.Course;
 import resources.Student;
@@ -135,7 +134,7 @@ public class Database {
         user.login();
         return user;
     }
-    public void logout(String username, String password) {
+    public void logout(String username) {
         // no such a user
         if (!adminsList.containsKey(username) & !studentsList.containsKey(username))
             throw new IllegalArgumentException("there is no such an user");
@@ -146,9 +145,6 @@ public class Database {
         // student logout
         if (studentsList.containsKey(username))
             user = studentsList.get(username);
-        // wrong password
-        if (user.getPassword()!=password)
-            throw new IllegalArgumentException("wrong password");
         // already login
         if (!user.getStatus())
             throw new IllegalArgumentException("the user is not logged in");

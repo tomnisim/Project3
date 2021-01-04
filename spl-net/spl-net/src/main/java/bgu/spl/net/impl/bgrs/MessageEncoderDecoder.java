@@ -5,7 +5,7 @@ import Messages.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
-public class MessageEncoderDecoder  {
+public class MessageEncoderDecoder implements bgu.spl.net.api.MessageEncoderDecoder<Message> {
     private byte[] bytes = new byte[1 << 10]; //start with 1k
     private byte[] opcodeBytes = new byte[2];
     private byte[] passwordBytes = new byte[1<<10];
