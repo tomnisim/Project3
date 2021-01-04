@@ -16,7 +16,7 @@ public class ACKMessage extends Message {
     public String toString()
     {
         String answer;
-        answer=opcode.toString()+messageOpcode.toString()+description+"0";
+        answer=opcode.toString()+messageOpcode.toString()+description+'\0';
         return answer;
     }
 

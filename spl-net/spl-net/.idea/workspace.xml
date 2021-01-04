@@ -2,8 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="24770f93-7032-4f4a-9881-6b38f8433219" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/BGRSServer/ReactorMain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/BGRSServer/TPCMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Messages/ACKMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Messages/ACKMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bgrs/BgrsProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/bgrs/BgrsProtocol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bgrs/MessageEncoderDecoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/bgrs/MessageEncoderDecoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bgrs/courses.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/bgrs/courses.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/resources/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resources/Course.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/resources/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resources/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/resources/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resources/Student.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,8 +21,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -80,10 +88,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="618" y="301" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1536.824@0.0.1536.824" timestamp="1609346386905" />
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1609346992262">
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1609766964590">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1609346992262" />
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1609766964590" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1609255375020">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

@@ -1,6 +1,7 @@
 package resources;
 
 
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -40,9 +41,10 @@ public class Course {
     }
 
     public String getStat() {
-        String answer="Course: "+name+'\n';
-        answer=answer+" Seats Available: " + seatAvailable +"/"+numOfMaxStudents+'\n';
+        String answer="Course: "+name+' ';
+        answer=answer+" Seats Available: " + seatAvailable +"/"+numOfMaxStudents+' ';
         answer=answer+" Students Registered:[";
+        this.studentsRegistered.sort(Comparator.naturalOrder());
         for (int i=0;i<studentsRegistered.size();i++){
             answer=answer+this.studentsRegistered.get(i);
         }
@@ -55,6 +57,10 @@ public class Course {
     public boolean isStudentRegistered(String username) {
         return this.studentsRegistered.contains(username);
         // have to change the field - not student, string
+    }
+
+    public int getId() {
+        return id;
     }
 
     public void unregister(String username) {

@@ -1,12 +1,9 @@
-package bgrs;
+package bgu.spl.net.impl.bgrs;
 
 import Messages.*;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
 
 public class MessageEncoderDecoder  {
     private byte[] bytes = new byte[1 << 10]; //start with 1k

@@ -56,7 +56,7 @@ public class Database {
      * loades the courses from the file path specified
      * into the Database, returns true if successful.
      */
-    boolean initialize(String coursesFilePath) {
+    public boolean initialize(String coursesFilePath) {
         try (BufferedReader b = new BufferedReader(new FileReader(coursesFilePath))) {
             String line = b.readLine();
             while (line != null) {
@@ -68,34 +68,25 @@ public class Database {
                 int place = 0;
                 List<Integer> kdamCourse;
                 place = courses.indexOf('|');
-
                 String courseN = courses.substring(0, place - 1);//check if it include the end of the range
                 courses = courses.substring(place + 1);//rest of the line
                 courseNum = stringToInt(courseN);
-
                 place = courses.indexOf('|');
-
                 courseName = courses.substring(0, place - 1);//check if it include the end of the range
                 courses = courses.substring(place + 1);
-
                 place = courses.indexOf('|');
-
                 kdamCourseList = courses.substring(0, place - 1);//check if it include the end of the range
                 kdamCourse = stringToListInt(kdamCourseList);
                 courses = courses.substring(place + 1);
-
-
                 String numOfMS = courses;//check if it include the end of the range
                 numOfMaxStudents = stringToInt(numOfMS);
-
                 Course course = new Course(courseNum, courseName, numOfMaxStudents, kdamCourse);
                 courselist.put(courseNum, course);
-
                 line = b.readLine();
 
-                return true;
 
             }
+            return true;
 
 
         }
@@ -180,25 +171,38 @@ public class Database {
         {
             throw new IllegalArgumentException("the student isnt login");
         }
+        if (!this.studentsList.containsKey(userName)){
+            throw new IllegalArgumentException("admin cant register to a course");
+        }
         this.courselist.get(courseNumber).registerStudent(userName);
         this.studentsList.get(userName).addCourse(courseNumber);
 
     }
-    public String kdamCheck(int courseNumber) {
+    public String kdamCheck(int courseNumber,String username) {
         if (!courselist.containsKey(courseNumber))
             throw new IllegalArgumentException("there is not such a course");
+        if (!this.studentsList.containsKey("username"))
+            throw new IllegalArgumentException("kdam check valid only for student");
         return courselist.get(courseNumber).getKdam();
 
     }
-    public String CourseStat(int courseNumber) {
+    public String CourseStat(int courseNumber,String username) {
         if (!courselist.containsKey(courseNumber))
             throw new IllegalArgumentException("there is not such a course");
+        if (this.studentsList.containsKey(username))
+        {
+            throw new IllegalArgumentException("student cant send admin message");
+        }
         return courselist.get(courseNumber).getStat();
 
     }
-    public String studentStat(String username) {
+    public String studentStat(String username,String AdminUsername) {
         if (!this.studentsList.containsKey(username))
             throw new IllegalArgumentException("there is no such an user");
+        if (!this.adminsList.containsKey(adminsList))
+        {
+            throw new IllegalArgumentException("student cant send admin message");
+        }
         return this.studentsList.get(username).getStat();
 
     }
@@ -228,7 +232,7 @@ public class Database {
         {
             if(c.isStudentRegistered(username))
             {
-                answer=answer+c.getStat()+",";
+                answer=answer+c.getId()+",";
             }
         }
         return answer.substring(0,answer.length()-1)+"]";

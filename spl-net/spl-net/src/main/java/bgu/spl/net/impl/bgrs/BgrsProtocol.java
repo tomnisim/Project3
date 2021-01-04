@@ -1,4 +1,4 @@
-package bgrs;
+package bgu.spl.net.impl.bgrs;
 
 
 
@@ -8,9 +8,6 @@ import Messages.Message;
 import bgu.spl.net.api.MessagingProtocol;
 import resources.Database;
 import resources.User;
-
-import java.util.LinkedList;
-import java.util.List;
 
 
 public class BgrsProtocol implements MessagingProtocol<Message> {
@@ -34,7 +31,7 @@ public class BgrsProtocol implements MessagingProtocol<Message> {
                 // send error message
                 return new Error(1);
             }
-                return new ACKMessage(1,"admin register successfully");
+                return new ACKMessage(1,null);
         }
         if (opcode == 2)  {
             username=msg.getUser();
@@ -45,7 +42,7 @@ public class BgrsProtocol implements MessagingProtocol<Message> {
                 // send error message
                 return new Error(2);
             }
-            return new ACKMessage(2,"student register successfully");
+            return new ACKMessage(2,null);
         }
         if (opcode == 3)  {
             username=msg.getUser();
@@ -57,7 +54,7 @@ public class BgrsProtocol implements MessagingProtocol<Message> {
                 return new Error(3);
             }
 
-            return new ACKMessage(3,"login successfully");
+            return new ACKMessage(3,null);
         }
         if (opcode == 4) {
             if (this.connectedUser==null)
@@ -71,7 +68,7 @@ public class BgrsProtocol implements MessagingProtocol<Message> {
                 return new Error(4);
             }
             this.connectedUser=null;
-            return new ACKMessage(4,"logout successfully");
+            return new ACKMessage(4,null);
         }
         if (opcode == 5)  {
             if (this.connectedUser==null)
@@ -84,13 +81,13 @@ public class BgrsProtocol implements MessagingProtocol<Message> {
                 // send error message
                 return new Error(5);
             }
-            return new ACKMessage(5,"registered to course successfully");
+            return new ACKMessage(5,null);
         }
         if (opcode == 6)  {
             courseNumber=msg.getCourseNumber();
             String temp;
             try {
-                temp = database.kdamCheck(courseNumber);
+                temp = database.kdamCheck(courseNumber,this.connectedUser.getUserName());
             } catch (Exception e) {
                 // send error message
                 return new Error(6);
@@ -101,7 +98,7 @@ public class BgrsProtocol implements MessagingProtocol<Message> {
             courseNumber=msg.getCourseNumber();
             String temp;
             try {
-                temp = database.CourseStat(courseNumber);
+                temp = database.CourseStat(courseNumber,this.connectedUser.getUserName());
             } catch (Exception e) {
                 // send error message
                 return new Error(7);
@@ -112,7 +109,7 @@ public class BgrsProtocol implements MessagingProtocol<Message> {
             username=msg.getUser();
             String answer;
             try {
-                answer = database.studentStat(username);
+                answer = database.studentStat(username,this.connectedUser.getUserName());
             } catch (Exception e) {
                 // send error message
                 return new Error(8);
@@ -147,7 +144,7 @@ public class BgrsProtocol implements MessagingProtocol<Message> {
                 // send error message
                 return new Error(10);
             }
-            return new ACKMessage(10,"unregister successfully");
+            return new ACKMessage(10,null);
         }
         if (opcode == 11) {
             if (this.connectedUser==null)
