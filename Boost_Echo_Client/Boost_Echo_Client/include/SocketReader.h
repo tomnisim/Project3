@@ -12,6 +12,12 @@ public:
     SocketReader(ConnectionHandler& ch);
     void run();
     short bytesToShort(char* bytesArr);
+<<<<<<< Updated upstream
+=======
+    int stringToInt(std::string s);
+    bool getTerminate();
+
+>>>>>>> Stashed changes
 private:
     ConnectionHandler* _ch;
     int opcode;

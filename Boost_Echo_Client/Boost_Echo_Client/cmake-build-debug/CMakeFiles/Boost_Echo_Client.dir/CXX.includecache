@@ -34,3 +34,10 @@ thread
 SocketReader.h
 -
 
+<<<<<<< Updated upstream
+=======
+/home/spl211/CLionProjects/Boost_Echo_Client/src/inputReader.cpp
+inputReader.h
+/home/spl211/CLionProjects/Boost_Echo_Client/src/inputReader.h
+
+>>>>>>> Stashed changes

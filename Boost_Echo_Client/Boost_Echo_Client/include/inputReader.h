@@ -12,6 +12,10 @@ public:
 
     inputReader(ConnectionHandler& ch);
     void run();
+<<<<<<< Updated upstream
+=======
+    void shortToBytes(short num, char* bytesArr);
+>>>>>>> Stashed changes
 private:
     ConnectionHandler* _ch;
 };

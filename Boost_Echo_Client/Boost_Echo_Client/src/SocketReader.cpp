@@ -6,13 +6,22 @@
 SocketReader::SocketReader(ConnectionHandler& ch)
 {
     _ch=&ch;
+<<<<<<< Updated upstream
 }
 short bytesToShort(char* bytesArr)
+=======
+    opcode=-1;
+    msgOpcode=-1;
+    this->shouldTerminate=false;
+}
+short SocketReader::bytesToShort(char *bytesArr)
+>>>>>>> Stashed changes
 {
     short result = (short)((bytesArr[0] & 0xff) << 8);
     result += (short)(bytesArr[1] & 0xff);
     return result;
 }
+<<<<<<< Updated upstream
 void SocketReader::run()
 {
     while (1) {
@@ -71,3 +80,80 @@ void SocketReader::run()
         }
     }
 }
+=======
+int SocketReader::stringToInt(std::string t)
+{
+    std::stringstream s(t);
+    int x=0;
+    s>>x;
+    return x;
+}
+void SocketReader::run()
+{
+
+    while (1)
+    {
+
+        if (opcode ==-1)
+        {
+            std::string opcodeS;
+
+            if (!_ch->getLine(opcodeS)) {
+                std::cout << "Disconnected. Exiting...\n" << std::endl;
+                break;
+            }
+            opcode= stringToInt(opcodeS);
+            std::cout << "opcode ==" +opcode << std::endl;
+
+        }
+
+
+        //else
+        //{
+            if (msgOpcode==-1)
+            {
+                std::string msgOpcodeS;
+
+                if (!_ch->getLine(msgOpcodeS)) {
+                    std::cout << "Disconnected. Exiting...\n" << std::endl;
+                    break;
+                }
+                msgOpcode= stringToInt(msgOpcodeS);
+                std::cout << "msgOpcode" << std::endl;
+                std::cout << msgOpcodeS << std::endl;
+                std::cout << msgOpcode << std::endl;
+                std::cout << "66666666666666666666" << std::endl;
+            }
+            else
+            {
+                if (opcode==12)
+                {
+                    if (!_ch->getLineString(message))
+                    {
+                        std::cout << "Disconnected. Exiting...\n" << std::endl;
+                        break;
+                    }
+                    if (msgOpcode==4)
+                    {
+                        std::cout << "ACK<"+msgOpcode+'>' << std::endl;
+                        this->shouldTerminate=true;//shut down the program
+                    }
+                    else if (message!="")
+                    {
+                        std::cout << "<"+message+">" << std::endl;
+                    }
+                }
+                else if (opcode==13)
+                {
+                    std::cout << "ERROR<"+msgOpcode+'>' << std::endl;
+
+                }
+
+        }
+    }
+}
+
+bool SocketReader::getTerminate() {
+    return shouldTerminate;
+}
+>>>>>>> Stashed changes
