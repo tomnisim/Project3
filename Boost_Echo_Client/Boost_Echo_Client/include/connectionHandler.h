@@ -20,13 +20,6 @@ public:
  
     // Connect to the remote machine
     bool connect();
-<<<<<<< Updated upstream
-=======
-
-    //
-    bool getFrameAsciiString(std::string& frame, char delimiter) ;
-    bool getLineString(std::string& line);
->>>>>>> Stashed changes
  
     // Read a fixed number of bytes from the server - blocking.
     // Returns false in case the connection is closed before bytesToRead bytes can be read.

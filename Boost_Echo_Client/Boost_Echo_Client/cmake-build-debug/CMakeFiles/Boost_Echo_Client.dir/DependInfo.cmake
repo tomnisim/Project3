@@ -4,17 +4,12 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/spl211/CLionProjects/Boost_Echo_Client/src/BGRSClient.cpp" "/home/spl211/CLionProjects/Boost_Echo_Client/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/BGRSClient.cpp.o"
-  "/home/spl211/CLionProjects/Boost_Echo_Client/src/SocketReader.cpp" "/home/spl211/CLionProjects/Boost_Echo_Client/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/SocketReader.cpp.o"
-  "/home/spl211/CLionProjects/Boost_Echo_Client/src/connectionHandler.cpp" "/home/spl211/CLionProjects/Boost_Echo_Client/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/connectionHandler.cpp.o"
-  "/home/spl211/CLionProjects/Boost_Echo_Client/src/inputReader.cpp" "/home/spl211/CLionProjects/Boost_Echo_Client/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/inputReader.cpp.o"
+  "/home/spl211/Downloads/Boost_Echo_Client/main.cpp" "/home/spl211/Downloads/Boost_Echo_Client/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "../include"
-  "../src/BGRSClient.cpp"
   )
 
 # Targets to which this target links.

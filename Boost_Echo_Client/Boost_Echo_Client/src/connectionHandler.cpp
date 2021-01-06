@@ -28,10 +28,6 @@ bool ConnectionHandler::connect() {
         std::cerr << "Connection failed (Error: " << e.what() << ')' << std::endl;
         return false;
     }
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
     return true;
 }
  
@@ -68,41 +64,12 @@ bool ConnectionHandler::sendBytes(const char bytes[], int bytesToWrite) {
 }
  
 bool ConnectionHandler::getLine(std::string& line) {
-    return getFrameAscii(line, '\0');
+    return getFrameAscii(line, '\n');
 }
-<<<<<<< Updated upstream
-=======
-bool ConnectionHandler::getLineString(std::string& line) {
-    return getFrameAsciiString(line, '\0');
-}
-
->>>>>>> Stashed changes
 
 bool ConnectionHandler::sendLine(std::string& line) {
-    return sendFrameAscii(line, '\0');
+    return sendFrameAscii(line, '\n');
 }
-<<<<<<< Updated upstream
-=======
-bool ConnectionHandler::getFrameAsciiString(std::string& frame, char delimiter) {
-    char ch;
-    // Stop when we encounter the null character.
-    // Notice that the null character is not appended to the frame string.
-    try {
-        do{
-            if(!getBytes(&ch, 1))
-            {
-                return false;
-            }
-            if(ch!='\0')
-                frame.append(1, ch);
-        }while (delimiter != ch);
-    } catch (std::exception& e) {
-        std::cerr << "recv failed2 (Error: " << e.what() << ')' << std::endl;
-        return false;
-    }
-    return true;
-}
->>>>>>> Stashed changes
  
 
 bool ConnectionHandler::getFrameAscii(std::string& frame, char delimiter) {
@@ -110,7 +77,6 @@ bool ConnectionHandler::getFrameAscii(std::string& frame, char delimiter) {
     // Stop when we encounter the null character.
     // Notice that the null character is not appended to the frame string.
     try {
-<<<<<<< Updated upstream
 	do{
 		if(!getBytes(&ch, 1))
 		{
@@ -119,16 +85,6 @@ bool ConnectionHandler::getFrameAscii(std::string& frame, char delimiter) {
 		if(ch!='\0')  
 			frame.append(1, ch);
 	}while (delimiter != ch);
-=======
-        if(!getBytes(&ch, 1))
-        {
-            return false;
-        }
-        if(ch!='\0')
-            frame.append(1, ch);
-
-
->>>>>>> Stashed changes
     } catch (std::exception& e) {
 	std::cerr << "recv failed2 (Error: " << e.what() << ')' << std::endl;
 	return false;
