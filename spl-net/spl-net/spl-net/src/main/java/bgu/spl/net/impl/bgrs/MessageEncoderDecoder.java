@@ -17,37 +17,37 @@ public class MessageEncoderDecoder implements bgu.spl.net.api.MessageEncoderDeco
     int userNameBytesCount = 0;
     int passwordBytesCount = 0;
     private int opcode=-1;
-    private int messageInd = 0;
 
     //@Override
     public Message decodeNextByte(byte nextByte) {
         //notice that the top 128 ascii characters have the same representation as their utf-8 counterparts
         //this allow us to do the following comparison
-        System.out.println(opcode);
+
 
         if (opcodeBytesCount==opcodeBytes.length)
         {
+
             if (opcode==-1)
             {
                 decodeOpcode();
             }
             if (opcode==1 | opcode==2 | opcode==3 )
             {
-                System.out.println("in if 123");
 
                 if (nextByte=='\0')//check
                 {
-                    System.out.println("first zero");
 
                     numOfZero++;
                     if (numOfZero<2)
                         return null;
-                    else
+                    else {
+                        numOfZero=0;
                         return decodeAllBytes();
+
+                    }
                 }
                 if (numOfZero==0)
                 {
-                    System.out.println("num of zero is 0");
 
                     if (userNameBytesCount>=userNameBytes.length)
                     {
@@ -59,7 +59,6 @@ public class MessageEncoderDecoder implements bgu.spl.net.api.MessageEncoderDeco
                 }
                 if (numOfZero==1)
                 {
-                    System.out.println("num of zero is 1");
 
                     if (passwordBytesCount>=passwordBytes.length)
                     {
@@ -71,38 +70,33 @@ public class MessageEncoderDecoder implements bgu.spl.net.api.MessageEncoderDeco
                 }
                 if (numOfZero==2)
                 {
-                    System.out.println("num of zero is 2");
 
                     return decodeAllBytes();
                 }
                 else
                 {
-                    throw new IllegalStateException("there are too many zero");
                 }
             }
-            else if (opcode==4 | opcode==11 )
+             if (opcode==4 | opcode==11 )
             {
                 return decodeAllBytes();
             }
-            else if (opcode==5 | opcode==6 | opcode==7 | opcode==9 |opcode==10 )
+            if (opcode==5 | opcode==6 | opcode==7 | opcode==9 |opcode==10 )
             {
 
-                System.out.println("5"+opcode);
 
-                if (courseNumberBytes.length==courseNumberBytesCount)
+                if (courseNumberBytesCount>=2)
                 {
-                    System.out.println("1");
-
-                    return decodeAllBytes();
                 }
                 else
                 {
-                    System.out.println("2");
 
                     courseNumberBytes[courseNumberBytesCount]=nextByte;
                     courseNumberBytesCount++;
-                    System.out.println("3");
-
+                    if (courseNumberBytesCount==2)
+                    {
+                        return decodeAllBytes();
+                    }
                     return null;
                 }
             }
@@ -124,12 +118,12 @@ public class MessageEncoderDecoder implements bgu.spl.net.api.MessageEncoderDeco
             }
             else
             {
-                System.out.print(opcode);
                 throw new IllegalStateException("Illegal opcode");
             }
         }
         else
         {
+
             pushByteToOpcode(nextByte);
         }
 
@@ -142,36 +136,58 @@ public class MessageEncoderDecoder implements bgu.spl.net.api.MessageEncoderDeco
     private void pushByteToOpcode(byte nextByte) {
         opcodeBytes[opcodeBytesCount]=nextByte;
         opcodeBytesCount++;
-        messageInd++;
     }
 
     //@Override
     public byte[] encode(Message message)
     {
-System.out.println("welcome");
-        return (message.toString()+'\0').getBytes(); //uses utf8 by default
+
+        byte[] ans=new byte[1];
+        if (message.getOpcode()==12)
+        {
+
+            if (message.getDescription()=="")
+            {
+                ans=new byte[5];
+                byte[] op=shortToBytes((short)message.getOpcode());
+                ans[0]=op[0];
+                ans[1]=op[1];
+                byte[] msgOp=shortToBytes((short)message.getMsgOpcode());
+                ans[2]=msgOp[0];
+                ans[3]=msgOp[1];
+                ans[4]='\0';
+            }
+            else
+            {
+                byte[] desc=message.getDescription().getBytes();
+                ans=new byte[5+desc.length];
+                byte[] op=shortToBytes((short)message.getOpcode());
+                ans[0]=op[0];
+                ans[1]=op[1];
+                byte[] msgOp=shortToBytes((short)message.getMsgOpcode());
+                ans[2]=msgOp[0];
+                ans[3]=msgOp[1];
+                for (int i=0;i<desc.length;i++)
+                {
+                    ans[i+4]=desc[i];
+                }
+                ans[ans.length-1]='\0';
+            }
+
+        }
+        else if (message.getOpcode()==13)
+        {
+            ans=new byte[4];
+            byte[] op=shortToBytes((short)message.getOpcode());
+            ans[0]=op[0];
+            ans[1]=op[1];
+            byte[] msgOp=shortToBytes((short)message.getMsgOpcode());
+            ans[2]=msgOp[0];
+            ans[3]=msgOp[1];
+        }
+        return ans; //uses utf8 by default
 
 
-    /*
-                 byte[] temp = new byte[4];
-        byte[] temp1 =shortToBytes((short)message.getOpcode());
-        byte[] temp2 =shortToBytes((short)message.getMsgOpcode());
-
-        System.out.println((short)message.getOpcode());
-        System.out.println((short)message.getMsgOpcode());
-
-        temp[0]=temp1[0];
-        temp[1]=temp1[1];
-        temp[2]=temp2[0];
-        temp[3]=temp2[1];
-
-
-        System.out.println(message.toString());
-
-
-        return temp;
-
-     */
     }
 
     private void decodeOpcode()
@@ -185,7 +201,6 @@ System.out.println("welcome");
     private Message decodeAllBytes(){
 
         // decoding opcode
-        System.out.println("decode all bytes"+opcode);
 
         if (opcode==-1)
         {
@@ -194,15 +209,19 @@ System.out.println("welcome");
 
 
         if (opcode==1) {
-            System.out.println("got ADMINREG");
              String username, password; // by the bytes
              // decoding username
              username = new String(userNameBytes,0,userNameBytesCount,StandardCharsets.UTF_8);
              //decoding password
              password = new String(passwordBytes,0,passwordBytesCount,StandardCharsets.UTF_8);
-            System.out.println("username="+username);
-            System.out.println("password="+password);
 
+            opcode=-1;
+            userNameBytesCount=0;
+            passwordBytesCount=0;
+            opcodeBytes = new byte[2];
+            passwordBytes = new byte[1<<10];
+            userNameBytes = new byte[1<<10];
+            opcodeBytesCount=0;
             return new AdminReg(username, password);
 
          }
@@ -212,6 +231,13 @@ System.out.println("welcome");
             username = new String(userNameBytes,0,userNameBytesCount,StandardCharsets.UTF_8);
             //decoding password
             password = new String(passwordBytes,0,passwordBytesCount,StandardCharsets.UTF_8);
+            opcode=-1;
+            userNameBytesCount=0;
+            passwordBytesCount=0;
+            opcodeBytes = new byte[2];
+            passwordBytes = new byte[1<<10];
+            userNameBytes = new byte[1<<10];
+            opcodeBytesCount=0;
             return new StudentReg(username, password);
 
         }
@@ -221,45 +247,84 @@ System.out.println("welcome");
             username = new String(userNameBytes,0,userNameBytesCount,StandardCharsets.UTF_8);
             //decoding password
             password = new String(passwordBytes,0,passwordBytesCount,StandardCharsets.UTF_8);
+
+            opcode=-1;
+            userNameBytesCount=0;
+            passwordBytesCount=0;
+            opcodeBytes = new byte[2];
+            passwordBytes = new byte[1<<10];
+            userNameBytes = new byte[1<<10];
+            opcodeBytesCount=0;
             return new Login(username, password);
         }
         if (opcode==4) {
+            opcode=-1;
+            opcodeBytes = new byte[2];
+            opcodeBytesCount=0;
             return new Logout();
         }
         if (opcode==5) {
-            String courseNumber;
-            courseNumber = new String(courseNumberBytes,0,courseNumberBytesCount,StandardCharsets.UTF_8);
-            return new CourseReg(stringToInt(courseNumber));
+            short answer=bytesToShort(courseNumberBytes);
+            opcode=-1;
+            courseNumberBytesCount=0;
+            opcodeBytes = new byte[2];
+            courseNumberBytes = new byte[2];
+            opcodeBytesCount=0;
+            return new CourseReg(answer);
         }
         if (opcode==6) {
-            String courseNumber;
-            courseNumber = new String(courseNumberBytes,0,courseNumberBytesCount,StandardCharsets.UTF_8);
-            return new KdamCheck(stringToInt(courseNumber));
+            short answer=bytesToShort(courseNumberBytes);
+            opcode=-1;
+            courseNumberBytesCount=0;
+            opcodeBytes = new byte[2];
+            courseNumberBytes = new byte[2];
+            opcodeBytesCount=0;
+            return new KdamCheck(answer);
 
         }
         if (opcode==7) {
-            String courseNumber;
-            courseNumber = new String(courseNumberBytes,0,courseNumberBytesCount,StandardCharsets.UTF_8);
-            return new CourseStat(stringToInt(courseNumber));
+            short answer=bytesToShort(courseNumberBytes);
+            opcode=-1;
+            courseNumberBytesCount=0;
+            opcodeBytes = new byte[2];
+            courseNumberBytes = new byte[2];
+            opcodeBytesCount=0;
+            return new CourseStat(answer);
 
         }
         if (opcode==8) {
             // decoding username
             String username = new String(userNameBytes,0,userNameBytesCount,StandardCharsets.UTF_8);
+            opcode=-1;
+            userNameBytesCount=0;
+            opcodeBytes = new byte[2];
+            userNameBytes = new byte[1<<10];
+            opcodeBytesCount=0;
             return new StudentStat(username);
         }
         if (opcode==9) {
-            String courseNumber;
-            courseNumber = new String(courseNumberBytes,0,courseNumberBytesCount,StandardCharsets.UTF_8);
-            return new IsRegistered(stringToInt(courseNumber));
+            short answer=bytesToShort(courseNumberBytes);
+            opcode=-1;
+            courseNumberBytesCount=0;
+            opcodeBytes = new byte[2];
+            courseNumberBytes = new byte[2];
+            opcodeBytesCount=0;
+            return new IsRegistered(answer);
 
         }
         if (opcode==10) {
-            String courseNumber;
-            courseNumber = new String(courseNumberBytes,0,courseNumberBytesCount,StandardCharsets.UTF_8);
-            return new UnRegister(stringToInt(courseNumber));
+            short answer=bytesToShort(courseNumberBytes);
+            opcode=-1;
+            courseNumberBytesCount=0;
+            opcodeBytes = new byte[2];
+            courseNumberBytes = new byte[2];
+            opcodeBytesCount=0;
+            return new UnRegister(answer);
         }
         if (opcode==11) {
+            opcode=-1;
+            opcodeBytes = new byte[2];
+            opcodeBytesCount=0;
             return new MyCourses();
         }
         return null;
@@ -267,6 +332,8 @@ System.out.println("welcome");
     }
 
     private int stringToInt(String s) {
+
+
         int pow=0;
         int ans=0;
         for (int i=s.length()-1;i>=0 ;i--)
@@ -274,6 +341,7 @@ System.out.println("welcome");
             ans=ans+((s.charAt(i)-'0')*(int)Math.pow(10,pow));
             pow++;
         }
+
         return ans;
 
 

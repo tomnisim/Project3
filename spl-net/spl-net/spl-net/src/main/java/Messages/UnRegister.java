@@ -44,18 +44,21 @@ public class UnRegister implements Message<Database> {
             database.unregister(connectedUser,courseNumber);
         } catch (Exception e) {
             // send error message
+            System.out.println(e.toString());
+
             return new Error(opcode);
         }
-        return new ACKMessage(opcode,null);
+        return new ACKMessage(opcode,"");
     }
 
     @Override
     public int getOpcode() {
         return opcode;
     }
+    public String getDescription(){return null;}
 
     public String toString()
     {
-        return "";
+        return "opcode: "+this.opcode + "coursenumber: "+this.courseNumber;
     }
 }

@@ -67,14 +67,14 @@ public class Database {
                 int place = 0;
                 List<Integer> kdamCourse;
                 place = courses.indexOf('|');
-                String courseN = courses.substring(0, place - 1);//check if it include the end of the range
+                String courseN = courses.substring(0, place );//check if it include the end of the range
                 courses = courses.substring(place + 1);//rest of the line
                 courseNum = stringToInt(courseN);
                 place = courses.indexOf('|');
-                courseName = courses.substring(0, place - 1);//check if it include the end of the range
+                courseName = courses.substring(0,place );//check if it include the end of the range
                 courses = courses.substring(place + 1);
                 place = courses.indexOf('|');
-                kdamCourseList = courses.substring(0, place - 1);//check if it include the end of the range
+                kdamCourseList = courses.substring(0, place );//check if it include the end of the range
                 kdamCourse = stringToListInt(kdamCourseList);
                 courses = courses.substring(place + 1);
                 String numOfMS = courses;//check if it include the end of the range
@@ -117,16 +117,19 @@ public class Database {
         // no such a user
         if (!adminsList.containsKey(username) & !studentsList.containsKey(username))
             throw new IllegalArgumentException("there is no such an user");
+
         User user=null;
         // admin login
         if (adminsList.containsKey(username))
             user = adminsList.get(username);
         // student login
-        if (studentsList.containsKey(username))
+        else if (studentsList.containsKey(username))
             user = studentsList.get(username);
         // wrong password
-        if (user.getPassword()!=password)
+        if (!user.getPassword().equals(password))
+        {
             throw new IllegalArgumentException("wrong password");
+        }
         // already login
         if (user.getStatus())
             throw new IllegalArgumentException("the user is already logged in");
@@ -153,6 +156,7 @@ public class Database {
     }
     public void registerToCourse(String userName,int courseNumber) {
         // no such a course
+
         if (!courselist.containsKey(courseNumber))
             throw new IllegalArgumentException("no such a course");
         // no seats available
@@ -166,6 +170,10 @@ public class Database {
         if(!this.studentsList.get(userName).getStatus())
         {
             throw new IllegalArgumentException("the student isnt login");
+        }
+        if (this.courselist.get(courseNumber).isStudentRegistered(userName))
+        {
+            throw new IllegalArgumentException("the user is already registered to this course");
         }
         if (!this.studentsList.containsKey(userName)){
             throw new IllegalArgumentException("admin cant register to a course");
@@ -218,6 +226,9 @@ public class Database {
         if (!this.courselist.get(courseNumber).isStudentRegistered(username))
             throw new IllegalArgumentException("the student is not registerd to this course");
         this.courselist.get(courseNumber).unregister(username);
+        this.studentsList.get(username).unregister(courseNumber);
+
+
         return true;
     }
     public String myCourses(String username) {

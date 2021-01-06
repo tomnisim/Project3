@@ -32,4 +32,16 @@ public class Student extends User {
         }
         return length==0;
     }
+    public void unregister(int course){
+        if (finishCourses.contains(course)){
+            this.finishCourses.remove(finishCourses.indexOf(course));
+
+
+        }
+        else
+        {
+            System.out.println("course not updated in structe");
+        }
+    }
+
 }

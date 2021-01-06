@@ -45,6 +45,8 @@ public class KdamCheck implements Message<Database> {
             temp = database.kdamCheck(courseNumber,this.connectedUser);
         } catch (Exception e) {
             // send error message
+            System.out.println(e.toString());
+
             return new Error(opcode);
         }
         return new ACKMessage(opcode,(temp));    }
@@ -53,9 +55,11 @@ public class KdamCheck implements Message<Database> {
     public int getOpcode() {
         return opcode;
     }
+    public String getDescription(){return null;}
+
 
     public String toString()
     {
-        return "";
+        return "opcode: "+this.opcode + "COURSENUMNER: "+this.courseNumber;
     }
 }

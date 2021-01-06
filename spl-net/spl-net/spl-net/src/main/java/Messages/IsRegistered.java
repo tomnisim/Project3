@@ -28,12 +28,13 @@ public class IsRegistered implements Message<Database> {
 
     public String toString()
     {
-        return "";
+        return "opcode: "+this.opcode + "coursenumber: "+this.courseNumber;
     }
     @Override
     public String getUser() {
         return null;
     }
+    public String getDescription(){return null;}
 
     @Override
     public String getPassword() {
@@ -48,16 +49,23 @@ public class IsRegistered implements Message<Database> {
 
     @Override
     public Message operate(Database database) {
+        boolean flag = false;
         if (this.connectedUser==null)
             return new Error(opcode);
 
         try {
-            database.isRegisterd(connectedUser,courseNumber);
+             flag = database.isRegisterd(connectedUser,courseNumber);
         }
         catch (Exception e)
         {
+            System.out.println(e.toString());
+            return new Error(opcode);
+        }
+        if (flag){
+            return new ACKMessage(opcode,"REGISTERED");
+        }
+        else{
             return new ACKMessage(opcode,"NOT REGISTERED");
         }
-
-        return new ACKMessage(opcode,"REGISTERED");    }
+           }
 }

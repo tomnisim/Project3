@@ -43,12 +43,7 @@ public class Course {
     public String getStat() {
         String answer="Course: "+name+' ';
         answer=answer+" Seats Available: " + seatAvailable +"/"+numOfMaxStudents+' ';
-        answer=answer+" Students Registered:[";
-        this.studentsRegistered.sort(Comparator.naturalOrder());
-        for (int i=0;i<studentsRegistered.size();i++){
-            answer=answer+this.studentsRegistered.get(i);
-        }
-        answer=answer+"]";
+        answer=answer+this.studentsRegistered.toString().replaceAll(" ","");
         return answer;
 
 
@@ -64,10 +59,12 @@ public class Course {
     }
 
     public void unregister(String username) {
-        this.studentsRegistered.remove(username);
+        this.studentsRegistered.remove(this.studentsRegistered.indexOf(username));
+        seatAvailable++;
     }
 
     public void registerStudent(String userName) {
         this.studentsRegistered.add(userName);
+        this.seatAvailable--;
     }
 }

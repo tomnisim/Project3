@@ -33,6 +33,7 @@ public class Login implements Message<Database> {
     public String getPassword() {
         return password;
     }
+    public String getDescription(){return null;}
 
     @Override
     public Integer getCourseNumber() {
@@ -46,16 +47,19 @@ public class Login implements Message<Database> {
 
     public String toString()
     {
-        return "";
+        return "opcode: "+this.opcode + "username: "+this.userName+"password: "+this.password;
+
     }
     public Message operate(Database database){
         try {
            database.login(userName,password);
         } catch (Exception e) {
             // send error message
+            System.out.println(e.toString());
+
             return new Error(opcode);
         }
 
-        return new ACKMessage(opcode,null);
+        return new ACKMessage(opcode,"");
     }
 }

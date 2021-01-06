@@ -47,6 +47,7 @@ public class Error implements Message<Database> {
     public Integer getCourseNumber() {
         return null;
     }
+    public String getDescription(){return null;}
 
     @Override
     public Message operate(Database database) {

@@ -56,6 +56,9 @@ private String connectedUser=null;
         return null;
     }
 
+    public String getDescription(){return description;}
+
+
     @Override
     public Message operate(Database database) {
         return null;

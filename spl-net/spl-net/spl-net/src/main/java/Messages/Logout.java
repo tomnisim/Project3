@@ -45,19 +45,22 @@ public class Logout implements Message<Database> {
             database.logout(connectedUser);
         } catch (Exception e) {
             // send error message
+            System.out.println(e.toString());
+
             return new Error(opcode);
         }
         this.connectedUser=null;
-        return new ACKMessage(opcode,null);
+        return new ACKMessage(opcode,"");
     }
 
     @Override
     public int getOpcode() {
         return 0;
     }
+    public String getDescription(){return null;}
 
     public String toString()
     {
-        return "";
+        return "opcode: "+this.opcode ;
     }
 }

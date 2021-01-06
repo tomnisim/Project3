@@ -28,15 +28,15 @@ public class StudentReg implements Message<Database> {
 
     @Override
     public Message operate(Database database) {
-        System.out.println("aaa");
 
         try {
             database.StudentRegister(username,password);
         } catch (Exception e) {
             // send error message
+            System.out.println(e.toString());
             return new Error(opcode);
         }
-        return new ACKMessage(opcode,null);
+        return new ACKMessage(opcode,"");
     }
 
     @Override
@@ -51,12 +51,13 @@ public class StudentReg implements Message<Database> {
 
     public String toString()
     {
-        return "";
+        return "opcode: "+this.opcode + "username: "+this.username+"password: "+this.password;
     }
     @Override
     public void setConnectUser(String userName) {
         this.connectedUser=userName;
     }
+    public String getDescription(){return null;}
 
     public boolean isNeedConnectUser() {
         return needConnectUser;

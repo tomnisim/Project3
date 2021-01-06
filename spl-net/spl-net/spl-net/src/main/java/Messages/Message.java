@@ -15,5 +15,7 @@ boolean isNeedConnectUser();
  void setConnectUser(String userName);
 
     int getMsgOpcode();
+
+    String getDescription();
 }
 

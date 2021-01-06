@@ -25,13 +25,13 @@ public class BgrsProtocol<T> implements MessagingProtocol<Message> {
     //@Override
     public Message process(Message msg)
     {
-        System.out.println("answer");
-
+        if (msg.getOpcode()==3 && this.connectedUser!=null)
+        {
+            return new Error(3);
+        }
         if (msg.isNeedConnectUser())
             msg.setConnectUser(this.connectedUser);
         Message answer = msg.operate(database);
-        System.out.println(answer);
-
         // check if need to change the connected user
         if (answer.getOpcode()==12 && msg.getOpcode()==3)
             this.connectedUser=msg.getUser();

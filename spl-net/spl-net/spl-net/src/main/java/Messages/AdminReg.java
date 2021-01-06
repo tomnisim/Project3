@@ -42,7 +42,7 @@ public class AdminReg implements Message<Database> {
     }
     public String toString()
     {
-        return "";
+        return "opcode: "+this.opcode + "username: "+this.username+"password: "+this.password;
     }
     public String getUser() {
         return username;
@@ -50,15 +50,17 @@ public class AdminReg implements Message<Database> {
 
     @Override
     public Message operate(Database database) {
-        System.out.println("admin reg operate");
         try {
             database.RegisterAdmin(username,password);
         } catch (Exception e) {
             // send error message
+            System.out.println(e.toString());
+
             return new Error(opcode);
         }
         return new ACKMessage(opcode,"");
     }
+    public String getDescription(){return null;}
 
     public int getMsgOpcode( ){return 0;}
 

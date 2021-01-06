@@ -46,6 +46,8 @@ public class StudentStat implements Message<Database> {
             answer = database.studentStat(username,this.connectedUser);
         } catch (Exception e) {
             // send error message
+            System.out.println(e.toString());
+
             return new Error(opcode);
         }
         return new ACKMessage(opcode,answer);
@@ -56,7 +58,8 @@ public class StudentStat implements Message<Database> {
     public int getOpcode() {
         return opcode;
     }
+    public String getDescription(){return null;}
 
-    public String toString(){return "";}
+    public String toString(){return "opcode: "+this.opcode + "username: "+this.username;}
 
 }

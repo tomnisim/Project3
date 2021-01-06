@@ -57,16 +57,12 @@ public class NonBlockingConnectionHandler<T> implements ConnectionHandler<T> {
             return () -> {
                 try {
                     while (buf.hasRemaining()) {
-                        System.out.println("9");
+
                         T nextMessage = encdec.decodeNextByte(buf.get());
                         if (nextMessage != null) {
-                            System.out.println("im before protocol");
                             T response = protocol.process(nextMessage);
-                            System.out.println("im after protocol");
 
                             if (response != null) {
-                                System.out.println("respons= "+response);
-
                                 writeQueue.add(ByteBuffer.wrap(encdec.encode(response)));
                                 reactor.updateInterestedOps(chan, SelectionKey.OP_READ | SelectionKey.OP_WRITE);
                             }

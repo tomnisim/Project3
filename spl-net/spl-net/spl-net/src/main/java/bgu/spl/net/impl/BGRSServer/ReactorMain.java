@@ -9,7 +9,7 @@ public class ReactorMain {
 
     public static void main(String[] args) {
         Database database = Database.getInstance();
-        database.initialize("Courses.txt");
+        database.initialize("/home/spl211/Downloads/spl-net/spl-net/src/Courses.txt");
 
         Server.reactor(
                 Integer.parseInt(args[0]),

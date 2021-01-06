@@ -21,7 +21,9 @@ public class CourseReg implements Message<Database> {
 
     public String toString()
     {
-        return "";
+
+        return "opcode: "+this.opcode + "COURSENUMNER: "+this.courseNumber;
+
     }
     @Override
     public String getUser() {
@@ -54,11 +56,14 @@ public class CourseReg implements Message<Database> {
             database.registerToCourse(connectedUser,courseNumber);
         } catch (Exception e) {
             // send error message
+            System.out.println(e.toString());
+
             return new Error(opcode);
         }
-        return new ACKMessage(opcode,null);
+        return new ACKMessage(opcode,"");
     }
     public int getMsgOpcode( ){return 0;}
+    public String getDescription(){return null;}
 
 }
 
