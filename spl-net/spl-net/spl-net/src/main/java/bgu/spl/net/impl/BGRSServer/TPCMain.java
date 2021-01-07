@@ -8,7 +8,7 @@ import resources.Database;
 public class TPCMain {
     public static void main(String[] args) {
         Database database = Database.getInstance();
-        database.initialize(args[0]);
+        database.initialize("./Courses.txt");
 
         Server.threadPerClient(
                 Integer.parseInt(args[0]), //port

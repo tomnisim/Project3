@@ -1,39 +1,34 @@
 package resources;
 
 
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class Course {
     private int id;
     private String name;
     private int numOfMaxStudents;
     private int seatAvailable;
-    private List<String> studentsRegistered;
-    private List<Integer> kdamCoursesList;
+    private ConcurrentHashMap<String, String> studentsRegistered;
+    private ConcurrentHashMap<Integer, Integer> kdamCoursesList;
 
-    public Course(int id,String name,int numOfMaxStudents,List<Integer> kdamCoursesList){
+    public Course(int id,String name,int numOfMaxStudents,ConcurrentHashMap<Integer, Integer> kdamCoursesList){
         this.name=name;
         this.id=id;
         this.numOfMaxStudents=numOfMaxStudents;
         this.kdamCoursesList=kdamCoursesList;
         this.seatAvailable=numOfMaxStudents;
-        this.studentsRegistered = new LinkedList<String>();
+        this.studentsRegistered = new ConcurrentHashMap<String, String>();
     }
 
-    public List<Integer> getKdamCoursesList() {
+    public ConcurrentHashMap<Integer, Integer> getKdamCoursesList() {
         return kdamCoursesList;
     }
 
     public String getKdam() {
         String answer="";
-        for (int i=0;i<this.kdamCoursesList.size();i++)
-        {
-            answer=answer+this.kdamCoursesList.get(i).toString()+",";
-        }
-
-        return answer.substring(0, answer.length()-1);
+        return answer+this.kdamCoursesList.keySet().toString().replaceAll(" ","");
     }
 
     public int getSeatsAvailable() {
@@ -41,17 +36,21 @@ public class Course {
     }
 
     public String getStat() {
-        String answer="Course: "+name+' ';
-        answer=answer+" Seats Available: " + seatAvailable +"/"+numOfMaxStudents+' ';
-        answer=answer+this.studentsRegistered.toString().replaceAll(" ","");
-        return answer;
+        List<String> studentsReg = new LinkedList<>();
+        for (String s :studentsRegistered.keySet())
+        {
+            studentsReg.add(s);
+        }
+        Collections.sort(studentsReg);
+        String answer="Course: ("+id+") "+name+'\n';
+        answer=answer+"Seats Available: " + seatAvailable +"/"+numOfMaxStudents+'\n';
+        return answer+"Students Registered: "+studentsReg.toString().replaceAll(" ","");
 
 
     }
 
     public boolean isStudentRegistered(String username) {
-        return this.studentsRegistered.contains(username);
-        // have to change the field - not student, string
+        return this.studentsRegistered.containsKey(username);
     }
 
     public int getId() {
@@ -59,12 +58,12 @@ public class Course {
     }
 
     public void unregister(String username) {
-        this.studentsRegistered.remove(this.studentsRegistered.indexOf(username));
+        this.studentsRegistered.remove(username);
         seatAvailable++;
     }
 
     public void registerStudent(String userName) {
-        this.studentsRegistered.add(userName);
+        this.studentsRegistered.putIfAbsent(userName, userName);
         this.seatAvailable--;
     }
 }

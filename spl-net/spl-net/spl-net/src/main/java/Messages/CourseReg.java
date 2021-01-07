@@ -56,8 +56,6 @@ public class CourseReg implements Message<Database> {
             database.registerToCourse(connectedUser,courseNumber);
         } catch (Exception e) {
             // send error message
-            System.out.println(e.toString());
-
             return new Error(opcode);
         }
         return new ACKMessage(opcode,"");

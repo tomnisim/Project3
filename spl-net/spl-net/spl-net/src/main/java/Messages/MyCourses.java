@@ -43,8 +43,6 @@ public class MyCourses implements Message<Database> {
         try {
             answer = database.myCourses(connectedUser);
         } catch (Exception e) {
-            System.out.println(e.toString());
-
             return new Error(opcode);
         }
         return new ACKMessage(opcode,answer);    }

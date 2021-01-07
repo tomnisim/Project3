@@ -13,6 +13,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.stream.Stream;
 
 /**
@@ -28,18 +29,20 @@ public class Database {
 
     //to prevent user from creating new Database
 
-    private HashMap<Integer, Course> courselist;
-    private HashMap<String, Admin> adminsList;
-    private HashMap<String, Student> studentsList;
-
+    private ConcurrentHashMap<Integer, Course> courselist;
+    private ConcurrentHashMap<Integer, Course> courselistOredered;
+    private int coursesCounter=0;
+    private ConcurrentHashMap<String, Admin> adminsList;
+    private ConcurrentHashMap<String, Student> studentsList;
     private static class SingletonHolder {
         private static Database instance = new Database();
     }
 
     private Database() {
-        adminsList = new HashMap<String, Admin>();
-        studentsList = new HashMap<String, Student>();
-        courselist = new HashMap<Integer, Course>();
+        adminsList = new ConcurrentHashMap<String, Admin>();
+        studentsList = new ConcurrentHashMap<String, Student>();
+        courselist = new ConcurrentHashMap<Integer, Course>();
+        courselistOredered = new ConcurrentHashMap<Integer, Course>();
 
 
     }
@@ -65,7 +68,7 @@ public class Database {
                 String kdamCourseList = "";
                 int numOfMaxStudents = 0;
                 int place = 0;
-                List<Integer> kdamCourse;
+                ConcurrentHashMap<Integer, Integer> kdamCourse;
                 place = courses.indexOf('|');
                 String courseN = courses.substring(0, place );//check if it include the end of the range
                 courses = courses.substring(place + 1);//rest of the line
@@ -81,6 +84,8 @@ public class Database {
                 numOfMaxStudents = stringToInt(numOfMS);
                 Course course = new Course(courseNum, courseName, numOfMaxStudents, kdamCourse);
                 courselist.put(courseNum, course);
+                courselistOredered.putIfAbsent(coursesCounter, course);
+                coursesCounter++;
                 line = b.readLine();
 
 
@@ -94,23 +99,29 @@ public class Database {
         return false;
     }
 
-
-
-
-
-
+    public ConcurrentHashMap<Integer, Course> getCourselistOredered() {
+        return courselistOredered;
+    }
 
     // update database methods
     public void RegisterAdmin (String username, String password) {
         if (adminsList.containsKey(username) | studentsList.containsKey(username))
             throw new IllegalArgumentException("username is already registered");
-        adminsList.put(username,new Admin(username,password));
+       if(adminsList.putIfAbsent(username,new Admin(username,password)) != null)
+           throw new IllegalArgumentException("username is already registered");
 
     }
     public void StudentRegister(String username, String password) {
-        if (adminsList.containsKey(username) | studentsList.containsKey(username))
+        if (adminsList.containsKey(username) | studentsList.containsKey(username)) {
             throw new IllegalArgumentException("username is already registered");
-        studentsList.put(username,new Student(username,password));
+        }
+
+            if(studentsList.putIfAbsent(username,new Student(username,password))!=null) {
+                throw new IllegalArgumentException("username is already registered");
+            }
+
+
+
 
     }
     public User login(String username, String password) {
@@ -156,28 +167,30 @@ public class Database {
     }
     public void registerToCourse(String userName,int courseNumber) {
         // no such a course
-
         if (!courselist.containsKey(courseNumber))
             throw new IllegalArgumentException("no such a course");
         // no seats available
         Course course = courselist.get(courseNumber);
-        if (course.getSeatsAvailable()==0)
+        if (course.getSeatsAvailable()<=0)
             throw new IllegalArgumentException("no seats available");
+        // admin cant register to course
+        if (!this.studentsList.containsKey(userName)){
+            throw new IllegalArgumentException("admin cant register to a course");
+        }
         // student doesnt complete kdamCourse
-        if (!this.studentsList.get(userName).finishKdamCourses(this.courselist.get(courseNumber).getKdamCoursesList()))
+        if (!this.studentsList.get(userName).finishKdamCourses(course.getKdamCoursesList()))
             throw new IllegalArgumentException("the student doesnt complete all the required kdam courses");
+
         // the student isnt login
         if(!this.studentsList.get(userName).getStatus())
         {
             throw new IllegalArgumentException("the student isnt login");
         }
-        if (this.courselist.get(courseNumber).isStudentRegistered(userName))
+        if (course.isStudentRegistered(userName))
         {
             throw new IllegalArgumentException("the user is already registered to this course");
         }
-        if (!this.studentsList.containsKey(userName)){
-            throw new IllegalArgumentException("admin cant register to a course");
-        }
+
         this.courselist.get(courseNumber).registerStudent(userName);
         this.studentsList.get(userName).addCourse(courseNumber);
 
@@ -185,7 +198,7 @@ public class Database {
     public String kdamCheck(int courseNumber,String username) {
         if (!courselist.containsKey(courseNumber))
             throw new IllegalArgumentException("there is not such a course");
-        if (!this.studentsList.containsKey("username"))
+        if (!this.studentsList.containsKey(username))
             throw new IllegalArgumentException("kdam check valid only for student");
         return courselist.get(courseNumber).getKdam();
 
@@ -203,7 +216,7 @@ public class Database {
     public String studentStat(String username,String AdminUsername) {
         if (!this.studentsList.containsKey(username))
             throw new IllegalArgumentException("there is no such an user");
-        if (!this.adminsList.containsKey(adminsList))
+        if (!this.adminsList.containsKey(AdminUsername))
         {
             throw new IllegalArgumentException("student cant send admin message");
         }
@@ -232,33 +245,30 @@ public class Database {
         return true;
     }
     public String myCourses(String username) {
-        String answer="[";
+        String answer="";
         if (!this.studentsList.containsKey(username))
             throw new IllegalArgumentException("there is no such an user");
-        for (Course c:courselist.values())
-        {
-            if(c.isStudentRegistered(username))
-            {
-                answer=answer+c.getId()+",";
-            }
-        }
-        return answer.substring(0,answer.length()-1)+"]";
+        answer=this.studentsList.get(username).getMyCourses();
+        return answer;
+
 
     }
     // private methods
-    private List<Integer> stringToListInt(String s) {
+    private ConcurrentHashMap<Integer, Integer> stringToListInt(String s) {
         String sCopy=s;
         sCopy=sCopy.substring(1,sCopy.length()-1);//remove the []
-        List<Integer> ans = new LinkedList<>();
+        ConcurrentHashMap<Integer, Integer> ans = new ConcurrentHashMap<Integer, Integer>();
         while (sCopy.contains(","))
         {
             int place=sCopy.indexOf(',');
-            ans.add(stringToInt(sCopy.substring(0,place-1)));
+            int toAdd = stringToInt(sCopy.substring(0,place));
+            ans.putIfAbsent(toAdd, toAdd);
             sCopy=sCopy.substring(place+1);
         }
         if (sCopy.length()>0)
         {
-            ans.add(stringToInt(sCopy));
+            int a = stringToInt(sCopy);
+            ans.putIfAbsent(a, a);
         }
         return ans;
     }
@@ -274,9 +284,5 @@ public class Database {
 
 
     }
-    private String listToString(List<Integer> list) {
-        // have to implement
-        return "";
-    }
-// tom rfe
+
 }

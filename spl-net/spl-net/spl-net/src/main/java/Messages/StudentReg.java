@@ -33,7 +33,6 @@ public class StudentReg implements Message<Database> {
             database.StudentRegister(username,password);
         } catch (Exception e) {
             // send error message
-            System.out.println(e.toString());
             return new Error(opcode);
         }
         return new ACKMessage(opcode,"");

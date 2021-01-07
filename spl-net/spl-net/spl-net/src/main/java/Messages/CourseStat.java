@@ -39,15 +39,11 @@ public class CourseStat implements Message<Database> {
     public Message operate(Database database) {
         String temp;
         if (connectedUser==null) {
-
             return new Error(opcode);
         }
         try {
             temp = database.CourseStat(courseNumber,this.connectedUser);
         } catch (Exception e) {
-            // send error message
-            System.out.println(e.toString());
-
             return new Error(opcode);
         }
         return new ACKMessage(opcode,temp);    }

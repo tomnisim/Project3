@@ -54,7 +54,6 @@ public class AdminReg implements Message<Database> {
             database.RegisterAdmin(username,password);
         } catch (Exception e) {
             // send error message
-            System.out.println(e.toString());
 
             return new Error(opcode);
         }

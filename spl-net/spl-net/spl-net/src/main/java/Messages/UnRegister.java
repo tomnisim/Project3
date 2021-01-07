@@ -44,8 +44,6 @@ public class UnRegister implements Message<Database> {
             database.unregister(connectedUser,courseNumber);
         } catch (Exception e) {
             // send error message
-            System.out.println(e.toString());
-
             return new Error(opcode);
         }
         return new ACKMessage(opcode,"");

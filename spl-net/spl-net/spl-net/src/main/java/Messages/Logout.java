@@ -45,8 +45,6 @@ public class Logout implements Message<Database> {
             database.logout(connectedUser);
         } catch (Exception e) {
             // send error message
-            System.out.println(e.toString());
-
             return new Error(opcode);
         }
         this.connectedUser=null;

@@ -45,8 +45,6 @@ public class KdamCheck implements Message<Database> {
             temp = database.kdamCheck(courseNumber,this.connectedUser);
         } catch (Exception e) {
             // send error message
-            System.out.println(e.toString());
-
             return new Error(opcode);
         }
         return new ACKMessage(opcode,(temp));    }

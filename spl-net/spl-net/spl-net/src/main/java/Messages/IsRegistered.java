@@ -58,7 +58,6 @@ public class IsRegistered implements Message<Database> {
         }
         catch (Exception e)
         {
-            System.out.println(e.toString());
             return new Error(opcode);
         }
         if (flag){

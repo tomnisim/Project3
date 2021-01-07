@@ -55,8 +55,6 @@ public class Login implements Message<Database> {
            database.login(userName,password);
         } catch (Exception e) {
             // send error message
-            System.out.println(e.toString());
-
             return new Error(opcode);
         }
 

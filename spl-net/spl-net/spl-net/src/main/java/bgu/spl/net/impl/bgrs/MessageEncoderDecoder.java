@@ -20,9 +20,6 @@ public class MessageEncoderDecoder implements bgu.spl.net.api.MessageEncoderDeco
 
     //@Override
     public Message decodeNextByte(byte nextByte) {
-        //notice that the top 128 ascii characters have the same representation as their utf-8 counterparts
-        //this allow us to do the following comparison
-
 
         if (opcodeBytesCount==opcodeBytes.length)
         {
@@ -102,9 +99,7 @@ public class MessageEncoderDecoder implements bgu.spl.net.api.MessageEncoderDeco
             }
             else if (opcode==8)
             {
-                //check if userName bytes[] cleared
-
-                if (nextByte=='\0')//check
+                if (nextByte=='\0')
                 {
                     return decodeAllBytes();
                 }
@@ -116,10 +111,7 @@ public class MessageEncoderDecoder implements bgu.spl.net.api.MessageEncoderDeco
                 userNameBytesCount++;
                 return null;
             }
-            else
-            {
-                throw new IllegalStateException("Illegal opcode");
-            }
+
         }
         else
         {
@@ -127,7 +119,7 @@ public class MessageEncoderDecoder implements bgu.spl.net.api.MessageEncoderDeco
             pushByteToOpcode(nextByte);
         }
 
-        return null; //not a line yet
+        return null;
 
 
 
@@ -197,6 +189,24 @@ public class MessageEncoderDecoder implements bgu.spl.net.api.MessageEncoderDeco
             opcode = bytesToShort(opcodeBytes);
         }
     }
+    private void clear123()
+    {
+        opcode=-1;
+        userNameBytesCount=0;
+        passwordBytesCount=0;
+        opcodeBytes = new byte[2];
+        passwordBytes = new byte[1<<10];
+        userNameBytes = new byte[1<<10];
+        opcodeBytesCount=0;
+    }
+    private void clear57910()
+    {
+        opcode=-1;
+        courseNumberBytesCount=0;
+        opcodeBytes = new byte[2];
+        courseNumberBytes = new byte[2];
+        opcodeBytesCount=0;
+    }
 
     private Message decodeAllBytes(){
 
@@ -209,19 +219,13 @@ public class MessageEncoderDecoder implements bgu.spl.net.api.MessageEncoderDeco
 
 
         if (opcode==1) {
-             String username, password; // by the bytes
-             // decoding username
-             username = new String(userNameBytes,0,userNameBytesCount,StandardCharsets.UTF_8);
-             //decoding password
-             password = new String(passwordBytes,0,passwordBytesCount,StandardCharsets.UTF_8);
 
-            opcode=-1;
-            userNameBytesCount=0;
-            passwordBytesCount=0;
-            opcodeBytes = new byte[2];
-            passwordBytes = new byte[1<<10];
-            userNameBytes = new byte[1<<10];
-            opcodeBytesCount=0;
+            String username, password; // by the bytes
+            // decoding username
+            username = new String(userNameBytes,0,userNameBytesCount,StandardCharsets.UTF_8);
+            //decoding password
+            password = new String(passwordBytes,0,passwordBytesCount,StandardCharsets.UTF_8);
+            clear123();
             return new AdminReg(username, password);
 
          }
@@ -231,13 +235,7 @@ public class MessageEncoderDecoder implements bgu.spl.net.api.MessageEncoderDeco
             username = new String(userNameBytes,0,userNameBytesCount,StandardCharsets.UTF_8);
             //decoding password
             password = new String(passwordBytes,0,passwordBytesCount,StandardCharsets.UTF_8);
-            opcode=-1;
-            userNameBytesCount=0;
-            passwordBytesCount=0;
-            opcodeBytes = new byte[2];
-            passwordBytes = new byte[1<<10];
-            userNameBytes = new byte[1<<10];
-            opcodeBytesCount=0;
+            clear123();
             return new StudentReg(username, password);
 
         }
@@ -247,14 +245,7 @@ public class MessageEncoderDecoder implements bgu.spl.net.api.MessageEncoderDeco
             username = new String(userNameBytes,0,userNameBytesCount,StandardCharsets.UTF_8);
             //decoding password
             password = new String(passwordBytes,0,passwordBytesCount,StandardCharsets.UTF_8);
-
-            opcode=-1;
-            userNameBytesCount=0;
-            passwordBytesCount=0;
-            opcodeBytes = new byte[2];
-            passwordBytes = new byte[1<<10];
-            userNameBytes = new byte[1<<10];
-            opcodeBytesCount=0;
+            clear123();
             return new Login(username, password);
         }
         if (opcode==4) {
@@ -265,36 +256,25 @@ public class MessageEncoderDecoder implements bgu.spl.net.api.MessageEncoderDeco
         }
         if (opcode==5) {
             short answer=bytesToShort(courseNumberBytes);
-            opcode=-1;
-            courseNumberBytesCount=0;
-            opcodeBytes = new byte[2];
-            courseNumberBytes = new byte[2];
-            opcodeBytesCount=0;
+            clear57910();
             return new CourseReg(answer);
         }
         if (opcode==6) {
             short answer=bytesToShort(courseNumberBytes);
-            opcode=-1;
-            courseNumberBytesCount=0;
-            opcodeBytes = new byte[2];
-            courseNumberBytes = new byte[2];
-            opcodeBytesCount=0;
+            clear57910();
             return new KdamCheck(answer);
 
         }
         if (opcode==7) {
             short answer=bytesToShort(courseNumberBytes);
-            opcode=-1;
-            courseNumberBytesCount=0;
-            opcodeBytes = new byte[2];
-            courseNumberBytes = new byte[2];
-            opcodeBytesCount=0;
+            clear57910();
             return new CourseStat(answer);
 
         }
         if (opcode==8) {
             // decoding username
             String username = new String(userNameBytes,0,userNameBytesCount,StandardCharsets.UTF_8);
+
             opcode=-1;
             userNameBytesCount=0;
             opcodeBytes = new byte[2];
@@ -304,21 +284,13 @@ public class MessageEncoderDecoder implements bgu.spl.net.api.MessageEncoderDeco
         }
         if (opcode==9) {
             short answer=bytesToShort(courseNumberBytes);
-            opcode=-1;
-            courseNumberBytesCount=0;
-            opcodeBytes = new byte[2];
-            courseNumberBytes = new byte[2];
-            opcodeBytesCount=0;
+            clear57910();
             return new IsRegistered(answer);
 
         }
         if (opcode==10) {
             short answer=bytesToShort(courseNumberBytes);
-            opcode=-1;
-            courseNumberBytesCount=0;
-            opcodeBytes = new byte[2];
-            courseNumberBytes = new byte[2];
-            opcodeBytesCount=0;
+            clear57910();
             return new UnRegister(answer);
         }
         if (opcode==11) {
@@ -331,21 +303,7 @@ public class MessageEncoderDecoder implements bgu.spl.net.api.MessageEncoderDeco
 
     }
 
-    private int stringToInt(String s) {
 
-
-        int pow=0;
-        int ans=0;
-        for (int i=s.length()-1;i>=0 ;i--)
-        {
-            ans=ans+((s.charAt(i)-'0')*(int)Math.pow(10,pow));
-            pow++;
-        }
-
-        return ans;
-
-
-    }
 
     //decode 2 bytes to short
     public short bytesToShort(byte[] byteArr)
