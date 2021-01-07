@@ -68,10 +68,10 @@ RM = /snap/clion/138/bin/cmake/linux/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/spl211/Downloads/Boost_Echo_Client
+CMAKE_SOURCE_DIR = /home/spl211/CLionProjects/Boost_Echo_Client
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/spl211/Downloads/Boost_Echo_Client/cmake-build-debug
+CMAKE_BINARY_DIR = /home/spl211/CLionProjects/Boost_Echo_Client/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -100,9 +100,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/spl211/Downloads/Boost_Echo_Client/cmake-build-debug/CMakeFiles /home/spl211/Downloads/Boost_Echo_Client/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/spl211/CLionProjects/Boost_Echo_Client/cmake-build-debug/CMakeFiles /home/spl211/CLionProjects/Boost_Echo_Client/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/spl211/Downloads/Boost_Echo_Client/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/spl211/CLionProjects/Boost_Echo_Client/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -143,32 +143,113 @@ Boost_Echo_Client/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boost_Echo_Client.dir/build.make CMakeFiles/Boost_Echo_Client.dir/build
 .PHONY : Boost_Echo_Client/fast
 
-main.o: main.cpp.o
+src/BGRsclient.o: src/BGRsclient.cpp.o
 
-.PHONY : main.o
+.PHONY : src/BGRsclient.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boost_Echo_Client.dir/build.make CMakeFiles/Boost_Echo_Client.dir/main.cpp.o
-.PHONY : main.cpp.o
+src/BGRsclient.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boost_Echo_Client.dir/build.make CMakeFiles/Boost_Echo_Client.dir/src/BGRsclient.cpp.o
+.PHONY : src/BGRsclient.cpp.o
 
-main.i: main.cpp.i
+src/BGRsclient.i: src/BGRsclient.cpp.i
 
-.PHONY : main.i
+.PHONY : src/BGRsclient.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boost_Echo_Client.dir/build.make CMakeFiles/Boost_Echo_Client.dir/main.cpp.i
-.PHONY : main.cpp.i
+src/BGRsclient.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boost_Echo_Client.dir/build.make CMakeFiles/Boost_Echo_Client.dir/src/BGRsclient.cpp.i
+.PHONY : src/BGRsclient.cpp.i
 
-main.s: main.cpp.s
+src/BGRsclient.s: src/BGRsclient.cpp.s
 
-.PHONY : main.s
+.PHONY : src/BGRsclient.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boost_Echo_Client.dir/build.make CMakeFiles/Boost_Echo_Client.dir/main.cpp.s
-.PHONY : main.cpp.s
+src/BGRsclient.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boost_Echo_Client.dir/build.make CMakeFiles/Boost_Echo_Client.dir/src/BGRsclient.cpp.s
+.PHONY : src/BGRsclient.cpp.s
+
+src/SocketReader.o: src/SocketReader.cpp.o
+
+.PHONY : src/SocketReader.o
+
+# target to build an object file
+src/SocketReader.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boost_Echo_Client.dir/build.make CMakeFiles/Boost_Echo_Client.dir/src/SocketReader.cpp.o
+.PHONY : src/SocketReader.cpp.o
+
+src/SocketReader.i: src/SocketReader.cpp.i
+
+.PHONY : src/SocketReader.i
+
+# target to preprocess a source file
+src/SocketReader.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boost_Echo_Client.dir/build.make CMakeFiles/Boost_Echo_Client.dir/src/SocketReader.cpp.i
+.PHONY : src/SocketReader.cpp.i
+
+src/SocketReader.s: src/SocketReader.cpp.s
+
+.PHONY : src/SocketReader.s
+
+# target to generate assembly for a file
+src/SocketReader.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boost_Echo_Client.dir/build.make CMakeFiles/Boost_Echo_Client.dir/src/SocketReader.cpp.s
+.PHONY : src/SocketReader.cpp.s
+
+src/connectionHandler.o: src/connectionHandler.cpp.o
+
+.PHONY : src/connectionHandler.o
+
+# target to build an object file
+src/connectionHandler.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boost_Echo_Client.dir/build.make CMakeFiles/Boost_Echo_Client.dir/src/connectionHandler.cpp.o
+.PHONY : src/connectionHandler.cpp.o
+
+src/connectionHandler.i: src/connectionHandler.cpp.i
+
+.PHONY : src/connectionHandler.i
+
+# target to preprocess a source file
+src/connectionHandler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boost_Echo_Client.dir/build.make CMakeFiles/Boost_Echo_Client.dir/src/connectionHandler.cpp.i
+.PHONY : src/connectionHandler.cpp.i
+
+src/connectionHandler.s: src/connectionHandler.cpp.s
+
+.PHONY : src/connectionHandler.s
+
+# target to generate assembly for a file
+src/connectionHandler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boost_Echo_Client.dir/build.make CMakeFiles/Boost_Echo_Client.dir/src/connectionHandler.cpp.s
+.PHONY : src/connectionHandler.cpp.s
+
+src/inputReader.o: src/inputReader.cpp.o
+
+.PHONY : src/inputReader.o
+
+# target to build an object file
+src/inputReader.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boost_Echo_Client.dir/build.make CMakeFiles/Boost_Echo_Client.dir/src/inputReader.cpp.o
+.PHONY : src/inputReader.cpp.o
+
+src/inputReader.i: src/inputReader.cpp.i
+
+.PHONY : src/inputReader.i
+
+# target to preprocess a source file
+src/inputReader.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boost_Echo_Client.dir/build.make CMakeFiles/Boost_Echo_Client.dir/src/inputReader.cpp.i
+.PHONY : src/inputReader.cpp.i
+
+src/inputReader.s: src/inputReader.cpp.s
+
+.PHONY : src/inputReader.s
+
+# target to generate assembly for a file
+src/inputReader.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boost_Echo_Client.dir/build.make CMakeFiles/Boost_Echo_Client.dir/src/inputReader.cpp.s
+.PHONY : src/inputReader.cpp.s
 
 # Help Target
 help:
@@ -179,9 +260,18 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Boost_Echo_Client"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... src/BGRsclient.o"
+	@echo "... src/BGRsclient.i"
+	@echo "... src/BGRsclient.s"
+	@echo "... src/SocketReader.o"
+	@echo "... src/SocketReader.i"
+	@echo "... src/SocketReader.s"
+	@echo "... src/connectionHandler.o"
+	@echo "... src/connectionHandler.i"
+	@echo "... src/connectionHandler.s"
+	@echo "... src/inputReader.o"
+	@echo "... src/inputReader.i"
+	@echo "... src/inputReader.s"
 .PHONY : help
 
 

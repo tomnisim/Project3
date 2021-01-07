@@ -8,42 +8,44 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/spl211/Downloads/Boost_Echo_Client/cmake-build-debug"/>
+				<Option working_dir="/home/spl211/CLionProjects/Boost_Echo_Client/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/spl211/Downloads/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/spl211/Downloads/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/spl211/Downloads/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/spl211/Downloads/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/spl211/CLionProjects/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/spl211/CLionProjects/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/spl211/CLionProjects/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/spl211/CLionProjects/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/spl211/Downloads/Boost_Echo_Client/cmake-build-debug"/>
+				<Option working_dir="/home/spl211/CLionProjects/Boost_Echo_Client/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/spl211/Downloads/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/spl211/Downloads/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/spl211/Downloads/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/spl211/Downloads/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/spl211/CLionProjects/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/spl211/CLionProjects/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/spl211/CLionProjects/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/spl211/CLionProjects/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/spl211/Downloads/Boost_Echo_Client/cmake-build-debug"/>
+				<Option working_dir="/home/spl211/CLionProjects/Boost_Echo_Client/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/spl211/Downloads/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/spl211/Downloads/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/spl211/Downloads/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/spl211/Downloads/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/spl211/CLionProjects/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/spl211/CLionProjects/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/spl211/CLionProjects/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/spl211/CLionProjects/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Boost_Echo_Client">
-				<Option output="/home/spl211/Downloads/Boost_Echo_Client/cmake-build-debug/Boost_Echo_Client" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/spl211/Downloads/Boost_Echo_Client/cmake-build-debug"/>
+				<Option output="/home/spl211/CLionProjects/Boost_Echo_Client/cmake-build-debug/Boost_Echo_Client" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/spl211/CLionProjects/Boost_Echo_Client/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/spl211/CLionProjects/Boost_Echo_Client/include"/>
+					<Add directory="/home/spl211/CLionProjects/Boost_Echo_Client/src/BGRsclient.cpp"/>
 					<Add directory="/usr/include/c++/7"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
 					<Add directory="/usr/include/c++/7/backward"/>
@@ -54,19 +56,21 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/spl211/Downloads/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 Boost_Echo_Client"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/spl211/Downloads/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/spl211/Downloads/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/spl211/Downloads/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/spl211/CLionProjects/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 Boost_Echo_Client"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/spl211/CLionProjects/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/spl211/CLionProjects/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/spl211/CLionProjects/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Boost_Echo_Client/fast">
-				<Option output="/home/spl211/Downloads/Boost_Echo_Client/cmake-build-debug/Boost_Echo_Client" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/spl211/Downloads/Boost_Echo_Client/cmake-build-debug"/>
+				<Option output="/home/spl211/CLionProjects/Boost_Echo_Client/cmake-build-debug/Boost_Echo_Client" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/spl211/CLionProjects/Boost_Echo_Client/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/spl211/CLionProjects/Boost_Echo_Client/include"/>
+					<Add directory="/home/spl211/CLionProjects/Boost_Echo_Client/src/BGRsclient.cpp"/>
 					<Add directory="/usr/include/c++/7"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
 					<Add directory="/usr/include/c++/7/backward"/>
@@ -77,17 +81,35 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/spl211/Downloads/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 Boost_Echo_Client/fast"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/spl211/Downloads/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/spl211/Downloads/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/spl211/Downloads/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/spl211/CLionProjects/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 Boost_Echo_Client/fast"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/spl211/CLionProjects/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/spl211/CLionProjects/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/spl211/CLionProjects/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/spl211/Downloads/Boost_Echo_Client/main.cpp">
+		<Unit filename="/home/spl211/CLionProjects/Boost_Echo_Client/include/SocketReader.h">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
-		<Unit filename="/home/spl211/Downloads/Boost_Echo_Client/CMakeLists.txt">
+		<Unit filename="/home/spl211/CLionProjects/Boost_Echo_Client/include/connectionHandler.h">
+			<Option target="Boost_Echo_Client"/>
+		</Unit>
+		<Unit filename="/home/spl211/CLionProjects/Boost_Echo_Client/include/inputReader.h">
+			<Option target="Boost_Echo_Client"/>
+		</Unit>
+		<Unit filename="/home/spl211/CLionProjects/Boost_Echo_Client/src/BGRsclient.cpp">
+			<Option target="Boost_Echo_Client"/>
+		</Unit>
+		<Unit filename="/home/spl211/CLionProjects/Boost_Echo_Client/src/SocketReader.cpp">
+			<Option target="Boost_Echo_Client"/>
+		</Unit>
+		<Unit filename="/home/spl211/CLionProjects/Boost_Echo_Client/src/connectionHandler.cpp">
+			<Option target="Boost_Echo_Client"/>
+		</Unit>
+		<Unit filename="/home/spl211/CLionProjects/Boost_Echo_Client/src/inputReader.cpp">
+			<Option target="Boost_Echo_Client"/>
+		</Unit>
+		<Unit filename="/home/spl211/CLionProjects/Boost_Echo_Client/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>
